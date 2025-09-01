@@ -1,0 +1,13 @@
+services:
+  cronus-api:
+    build:
+      context: .
+      dockerfile: Cronus.API/Dockerfile
+    container_name: cronus-api
+    ports:
+      - "5000:5000"   # API HTTP port
+      - "1234:1234"   # AP communication port
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:5000
+    restart: unless-stopped
